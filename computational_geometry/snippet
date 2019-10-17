@@ -1,0 +1,11 @@
+const double EPS = 1e-9;
+const double pi = acos(-1.0);
+const double INF = 1e9;
+
+double to_rad(double deg){
+	return deg * pi / 180.0;
+}
+
+double to_deg(double rad){
+	return rad * 180.0 /pi;
+}
