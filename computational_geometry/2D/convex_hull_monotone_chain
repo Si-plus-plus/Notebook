@@ -44,7 +44,7 @@ int main(){
 	vector <point> p;
 
 	for (int i = 0; i < 7; i++){
-		int x,y;
+		double x,y;
 		cin >> x >> y;
 
 		p.push_back ({x,y});
