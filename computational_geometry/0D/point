@@ -1,0 +1,25 @@
+struct point {
+    double x, y;
+    
+    point operator+ (point p) {return {x + p.x, y + p.y};}
+    point operator- (point p) {return {x - p.x, y - p.y};}
+    point operator* (double d) {return {x*d, y*d};}
+    point operator/ (double d) {return {x/d, y/d};}
+    
+    bool operator== (point a, point b){
+        return fabs (a.x - b.x) < EPS && fabs (a.y - b.y) < EPS; 
+    }
+    
+    bool operator!= (point a, point b){
+        return !(a == b);
+    }
+    
+    ostream &operator << (ostream& os, point p){
+        return os << "(" << p.x << "," << p.y << ")";
+    }
+    
+    bool operator <(const point &p) const {
+        return x < p.x || (x == p.x && y < p.y);
+    }
+};
+
