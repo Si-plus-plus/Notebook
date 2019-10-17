@@ -11,7 +11,7 @@ struct point {
 	}
 };
 
-double cross(const point &a, const point &b, const point &c)
+double cross(point &a, point &b, point &c)
 {
 	return (b.x - a.x) * (c.y - a.y) - (b.y - a.y) * (c.x - a.x);
 }
