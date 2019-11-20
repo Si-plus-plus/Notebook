@@ -1,0 +1,39 @@
+#include <bits/stdc++.h>
+#pragma GCC optimization ("O3")
+using namespace std;
+  
+#define ll              long long
+#define ull             unsigned long long
+#define pii             pair <int, int>
+#define pll             pair <ll, ll>
+
+#define fa(i, n, N)     for (ll i = n; i <= N; i++)
+#define fac(i, n, b, N) for (ll i = n; i <= N && b; i++)
+#define fd(i, n, N)     for (ll i = n; i >= N; i--)
+
+#define mp              make_pair
+#define pb              push_back
+#define pob             pop_back
+#define pf              push_front
+#define pof             pop_front
+#define fi              first
+#define se              second
+#define pb              push_back
+ 
+#define all(x)          x.begin(), x.end();
+#define len             length()
+#define endl            '\n'
+ 
+#define db(x)           cerr << ">>>>>> " << #x << " -> " << x << endl
+ 
+const double pi = acos(-1.0);
+const double EPS = 1e-9;
+ 
+void init (){
+  ios_base::sync_with_stdio(false); cin.tie(0); cout.tie(0);
+}
+ 
+int main() {
+    init();
+
+}
