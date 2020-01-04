@@ -1,0 +1,58 @@
+ll e, v, a, b, w, u;
+map <int, vector <pll>> g;
+//node_asal, node_ke - weight
+ll node[MAX], dis[MAX];
+priority_queue <ll> s;
+
+void printpath (ll n){
+	if (n != 1){
+		printpath (node[n]);
+	}
+	cout << n << " ";
+}
+
+int main() {
+    init();
+    
+    //n = nodes, m = edges
+    cin >> e >> v;
+    
+    while (v--){
+    	cin >> a >> b >> w;
+    	
+    	//bukan digraph
+    	g[a].pb({b,w});
+    	g[b].pb({a,w});
+	}
+    
+    //node asal, disuruhny dri 1 sih
+    s.push(1);
+    
+    fa (i, 1, e){
+    	//awalnya inf smua
+    	dis[i] = inf;
+    	node[i] = i;
+	}
+	
+	dis[1] = 0;
+	
+	while (!s.empty()){
+		u = s.top();
+		s.pop();
+		
+		for (auto x : g[u]){
+			v = x.fi;
+			w = x.se;
+			
+			if (dis[u] + w < dis[v]){
+				dis[v] = dis[u] + w;
+				s.push(v);
+				node[v] = u;
+			}
+		}
+	}
+	
+	if (dis[e] == inf) return cout << -1 << endl,0;
+	printpath(e);
+	cout << endl;
+}
