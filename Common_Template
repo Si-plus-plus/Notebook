@@ -1,13 +1,10 @@
-//last updated on 28.12.2019
+//last updated : 13.02.2020
 #include <bits/stdc++.h>
 #pragma GCC optimization ("O3")
 using namespace std;
 
 #define ll              long long
-#define ull             unsigned long long
 #define ld              long double
-#define pii             pair <int, int>
-#define piii            pair <int, pii>
 #define pll             pair <ll, ll>
 #define plll            pair <ll, pll>
 #define pss             pair <string, string>
@@ -29,10 +26,13 @@ using namespace std;
 #define len             length()
 #define endl            '\n'
 
+#define isss(x, s)      istringstream x (s)
 #define db(x)           cerr << ">>>>>> " << #x << " -> " << x << endl
+#define AAAA            cout << "\t:D" << endl;
 
-const ll inf = 1e9;
+const ll inf = INT_MAX;
 const ll inf2 = 1e18;
+const ll minf = -1*1e9;
 const ll MAX = 1e5+5;
 const ll MOD = 1e9+7;
 const double pi = acos(-1.0);
@@ -49,7 +49,7 @@ void init(int precision){
 
 inline void iofile (){
 	freopen ("input.txt", "r", stdin);
-	//freopen ("output.txt", "w", stdout);
+	// freopen ("output.txt", "w", stdout);
 }
 
 
