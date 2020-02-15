@@ -28,7 +28,7 @@ using namespace std;
 
 #define isss(x, s)      istringstream x (s)
 #define db(x)           cerr << ">>>>>> " << #x << " -> " << x << endl
-#define AAAA            cerr << "---  ┐(￣ヮ￣)┌  ---" << endl
+#define AAAA            cerr << "---  :D  ---" << endl
 
 const ll inf = INT_MAX;
 const ll inf2 = 1e18;
