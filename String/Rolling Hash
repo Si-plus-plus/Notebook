@@ -1,0 +1,23 @@
+ll rolling_hash (string kata, string cari){
+    ll base = 19;
+    ll cari_val, curr_val, curr_mult, occurences;
+
+    cari_val = curr_val = occurences = 0;
+    curr_mult = 1;
+    ll n_kata = kata.len;
+    ll n_cari = cari.len;
+
+    for (int i = 0; i < n_cari; i++){
+        (cari_val += (cari[i]*curr_mult)) %= MOD;
+        curr_mult *= base;
+    }
+
+    curr_mult = 1;
+    for (int i = 0; i < n_kata; i++){
+        (curr_val += (kata[i]*curr_mult)) %= MOD;
+        if (i < n_cari) curr_mult *= base;
+        else (curr_val -= (kata[i-n_cari])) /= base;
+        if (curr_val == cari_val) occurences ++;
+    }
+    return occurences;
+}
