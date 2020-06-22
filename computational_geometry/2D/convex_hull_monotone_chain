@@ -16,27 +16,24 @@ double cross(point &a, point &b, point &c)
 	return (b.x - a.x) * (c.y - a.y) - (b.y - a.y) * (c.x - a.x);
 }
 
-vector<point> convex_hull(vector<point> v) // counterclockwise
-{
-	ll n = v.size(), k = 0;
-	if (n <= 3) return v;
-	vector<point> nodes(2*n);
 
+vector<point> monotone(vector <point> v){
+	ll n = v.size(), k = 0;
+	vector<point> nodes(2*n);
 	sort(v.begin(), v.end());
 
 	for (ll i = 0; i < n; i++) {
-		while (k >= 2 && cross(nodes[k-2], nodes[k-1], v[i]) <= 0) k--;
+		while (k > 1 && cross(nodes[k-2], nodes[k-1], v[i]) <= 0) k--;
 		//kalo mau CW, <= ganti >
 		nodes[k++] = v[i];
 	}
 
-	for (ll i = n-1, t = k+1; i > 0; i--) {
-		while (k >= t && cross(nodes[k-2], nodes[k-1], v[i-1]) <= 0) k--;
-		//kalo mau CW, <= ganti >
-		nodes[k++] = v[i-1];
+	for (ll i = n-2, t = k+1; i >= 0; i--) {
+		while (k >= t && cross(nodes[k-2], nodes[k-1], v[i]) <= 0) k--;
+		nodes[k++] = v[i];
 	}
-
-	nodes.resize(k-1);
+	//https://algorithmist.com/wiki/Monotone_chain_convex_hull.cpp
+	nodes.resize(k);
 	return nodes;
 }
 
