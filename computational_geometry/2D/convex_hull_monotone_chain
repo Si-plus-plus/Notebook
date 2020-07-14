@@ -23,15 +23,15 @@ vector<point> monotone(vector <point> v){
 
 	for (ll i = 0; i < n; i++) {
 		while (k > 1 && cross(nodes[k-2], nodes[k-1], v[i]) <= 0) k--;
-		//kalo mau CW, <= ganti >
+		//kalo mau CW <= ganti ke >
 		nodes[k++] = v[i];
 	}
 
-	for (ll i = n-2, t = k+1; i >= 0; i--) {
-		while (k >= t && cross(nodes[k-2], nodes[k-1], v[i]) <= 0) k--;
+	for (ll i = n-1, t = k+1; i > 0; i--) {
+		while (k >= t && cross(nodes[k-2], nodes[k-1], v[i-1]) <= 0) k--;
 		nodes[k++] = v[i];
 	}
-	//https://algorithmist.com/wiki/Monotone_chain_convex_hull.cpp
+	
 	nodes.resize(k);
 	return nodes;
 }
