@@ -1,0 +1,64 @@
+//last updated : 24.04.2020
+#include <bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef pair <ll,ll> pll;
+
+#define mp              make_pair
+#define pb              push_back
+#define fi              first
+#define se              second
+
+#define endl            '\n'
+#define init			ios_base::sync_with_stdio(false); cin.tie(0); cout.tie(0);
+#define db(x)           cout << ">>>>>> " << #x << " -> " << x << endl
+
+const ll inf = 1e9;
+const ll MAX = 1e5+5;
+const ll MOD = 1e9+7;
+const double pi = acos(-1.0);
+const double EPS = 1e-9;
+
+struct pos{ ll r, c; };
+
+ll ntc, n;
+ll row, col, str, stc;
+ll dp[11][(1 << 10)+5];
+pos arr[11];
+ll w [11][11];
+
+ll dis (ll dri, ll ke){
+	return abs (arr[dri].r - arr[ke].r) + abs (arr[dri].c - arr[ke].c);
+}
+
+ll tsp (ll cur, ll mask){
+	if (mask == (1 << n)-1) return dis(cur, 0);
+	ll &ret = dp[cur][mask];
+	if (ret != -1) return ret;
+	ret = inf;
+	for (int i = 0; i < n; i++){
+		if (mask & (1 << i)) continue;
+		ll temp = tsp (i, mask + (1 << i)) + dis(cur, i);
+		ret = min(temp, ret);
+	}
+	// db (ret);
+	return ret;
+}
+
+int main(){
+	init;
+    // freopen ("input.txt", "r", stdin);
+	// freopen ("input.txt", "w", stdout);
+
+	cin >> ntc;
+	while (ntc--){
+		cin >> row >> col >> arr[0].r >>arr[0].c >> n;
+		n++;
+		for (int i = 1; i < n; i++){
+			cin >> arr[i].r >> arr[i].c;
+		}
+		memset (dp, -1, sizeof (dp));
+		cout << "The shortest path has length " << tsp (0, 1) << endl;
+	}
+}
