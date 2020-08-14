@@ -6,7 +6,6 @@ const int MAX = 1e5+5;
 
 int ntc, n, q, L, R, two;
 int spr[31-__builtin_clz(MAX)+1][MAX];
-multiset <int> s;
 
 void prints(){
     for (int i = 0; 1 << i <= n; i++) {
@@ -22,14 +21,10 @@ int getl (int x){
 }
 
 void build (){
-    for (int lv = 2, lay = 1; 1 << lay <= n; lv <<= 1, lay++){
-        s.clear();
-        for (int i = 0; i < n; i++){
-            s.insert (spr[0][i]);
-            if (i >= lv-1) {
-                spr[lay][i-lv+1] = *s.begin();
-                s.erase (s.lower_bound(spr[0][i-lv+1]));
-            }
+    int lim = floor (log2(n));
+    for (int lay = 1; lay <= lim; lay++){
+        for (int i = 0; i+(1<<lay) <= n; i++){
+            spr[lay][i] = min (spr[lay-1][i], spr[lay-1][i + (1 << (lay-1))]);
         }
     }
 }
